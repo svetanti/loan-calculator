@@ -1,0 +1,10 @@
+@import url('./vendor/normalize.css');
+@import url('./blocks/page/page.css');
+@import url('./blocks/calculator/calculator.css');
+@import url('./blocks/form/form.css');
+@import url('./blocks/select/select.css');
+@import url('./blocks/range/range.css');
+@import url('./blocks/range/__label/range__label.css');
+@import url('./blocks/range/__output/range__output.css');
+@import url('./blocks/range/__minmax/range__minmax.css');
+@import url('./blocks/result/result.css');
