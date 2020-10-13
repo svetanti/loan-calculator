@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Range(props) {
+export default function Input(props) {
   const { heading, param, min, max, value, disabled, onInputChange } = props;
 
   function handleChange(evt) {
@@ -8,25 +8,20 @@ export default function Range(props) {
   }
 
   return (
-
     <label
-      className='range__label'
+      className='input__heading'
       htmlFor={param}>
+      <span className='label'>{heading}</span>
       <input
-        className='range'
+        className='input'
         id={param}
         name={param}
-        type='range'
-        step='1'
+        type='number'
         min={min}
         max={max}
-        value={value}
+        value={value === '' ? min : value}
         disabled={disabled}
         onChange={handleChange} />
-      <div className='range__minmax'>
-        <span>{min === '' ? '' : Number(min).toLocaleString()}</span>
-        <span>{max === '' ? '' : Number(max).toLocaleString()}</span>
-      </div>
     </label>
   )
 }

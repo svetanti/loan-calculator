@@ -1,4 +1,5 @@
 import React from 'react';
+import Input from './Input';
 import Range from './Range';
 import Select from './Select';
 
@@ -23,6 +24,15 @@ export default function Form(props) {
         deposits={deposits}
         selectedOption={selectedOption}
         onSelect={onSelect} />
+      <Input
+        heading='Сумма вклада'
+        param='sum'
+        min={minSum}
+        max={maxSum}
+        onInputChange={onInputChange}
+        value={sumValue}
+        disabled={disabled}
+      />
       <Range
         heading='Сумма вклада'
         param='sum'
@@ -30,7 +40,17 @@ export default function Form(props) {
         max={maxSum}
         onInputChange={onInputChange}
         value={sumValue}
-        disabled={disabled} />
+        disabled={disabled}
+      />
+      <Input
+        heading='Срок вклада'
+        param='rate'
+        min={minPeriod}
+        max={maxPeriod}
+        value={periodValue}
+        onInputChange={onInputChange}
+        disabled={disabled}
+      />
       <Range
         heading='Срок вклада'
         param='rate'
@@ -38,7 +58,8 @@ export default function Form(props) {
         max={maxPeriod}
         value={periodValue}
         onInputChange={onInputChange}
-        disabled={disabled} />
+        disabled={disabled}
+      />
     </form>
   )
 }

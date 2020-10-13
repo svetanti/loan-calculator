@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './Form';
 import Result from './Result';
+import CalculatorHeader from './CalculatorHeader';
 
 export default function Calculator(props) {
   const {
@@ -23,6 +24,9 @@ export default function Calculator(props) {
 
   return (
     <div className='calculator'>
+      <CalculatorHeader
+        initialSum={sumValue}
+        totalSum={sum} />
       <Form
         deposits={deposits}
         selectedOption={selectedOption}
@@ -34,7 +38,8 @@ export default function Calculator(props) {
         sumValue={sumValue}
         periodValue={periodValue}
         onInputChange={onInputChange}
-        disabled={disabled} />
+        disabled={disabled}
+      />
       <Result
         deposit={deposit}
         period={period}

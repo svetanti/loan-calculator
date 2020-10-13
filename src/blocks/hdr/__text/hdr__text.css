@@ -1,0 +1,7 @@
+.hdr__text {
+  display: flex;
+  font-size: 14px;
+  margin-bottom: .5rem;
+  color: #323232;
+  opacity: .7
+}

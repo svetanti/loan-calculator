@@ -8,7 +8,10 @@ export default function Select(props) {
   }
 
   return (
-    <label htmlFor='select'>
+    <label
+      htmlFor='select'
+      className='input__heading'>
+      <span className='label'>Вклад</span>
       <select
         className='select'
         id='select'

@@ -1,0 +1,8 @@
+.hdr__heading {
+  height: 40px;
+  padding: 10px 0 10px 10px;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
