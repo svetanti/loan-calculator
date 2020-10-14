@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { deposits } from '../data/depcalc.json';
 import calculations from '../utils/calculations';
 import Calculator from './Calculator';
+import PrintButton from './PrintButton';
 
 function App() {
   const [sum, setSum] = useState(0)
@@ -14,11 +15,11 @@ function App() {
   const [maxPeriod, setMaxPeriod] = useState(0);
   const [sumValue, setSumValue] = useState(0);
   const [periodValue, setPeriodValue] = useState(0);
-  const [disabled, setDisabled] = useState(true);
-
   const [selectedPeriod, setSelectedPeriod] = useState(0);
   const [userSumInput, setUserSumInput] = useState(0);
   const [userPeriodInput, setUserPeriodInput] = useState(0);
+  const [disabled, setDisabled] = useState(true);
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   useEffect(() => {
     if (periodValue && selectedDeposit) {
@@ -58,6 +59,7 @@ function App() {
     setSelectedDeposit(currentDeposit);
     setMinAndMax(currentDeposit);
     setDisabled(false);
+    setBtnDisabled(false);
   }
 
   function setMinAndMax(current) {
@@ -108,6 +110,10 @@ function App() {
     evt.target.value < minPeriod ? setPeriodValue(minPeriod) : setPeriodValue(evt.target.value);
   }
 
+  function print() {
+    window.print();
+  }
+
   return (
     <div className="page">
       <Calculator
@@ -131,6 +137,9 @@ function App() {
         onRangeChange={handleRangeChange}
         disabled={disabled}
       />
+      <PrintButton
+        onClick={print}
+        btnDisabled={btnDisabled} />
     </div>
   );
 }

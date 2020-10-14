@@ -1,0 +1,32 @@
+.button {
+  width: 20%;
+  height: 50px;
+  background: #07426f;
+  border: none;
+  border-radius: 7px;
+  color: #fff;
+  font-size: 1rem;
+  font: 600;
+  margin: 10px auto 30px;
+  cursor: pointer;
+  transition: all .7s ease;
+}
+
+.button:disabled {
+  cursor: initial;
+  opacity: .4
+
+}
+.button:disabled:hover {
+  opacity: .4
+}
+
+.button:hover {
+  opacity: .7;
+}
+
+@media print {
+  .button {
+    display: none;
+  }
+}

@@ -1,5 +1,5 @@
 .result__value {
-  height: 18px;
+  text-align: right;
   font-size: 18px;
   font-weight: 600;
   color: #07426f;
@@ -7,7 +7,6 @@
 
 @media screen and (max-width: 500px) {
   .result__value {
-    height: 16px;
     font-size: 16px;
   }
 }

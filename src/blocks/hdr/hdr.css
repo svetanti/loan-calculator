@@ -4,3 +4,11 @@
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 1px;
 }
+
+@media print {
+  .hdr {
+    margin-top: 50px;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: space-between;
+  }
+}

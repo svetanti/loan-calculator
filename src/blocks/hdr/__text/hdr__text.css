@@ -5,3 +5,11 @@
   color: #323232;
   opacity: .7
 }
+
+@media print {
+  .hdr__text {
+    font-size: 20px;
+    color: #07426f;
+    font-weight: 600;
+  }
+}
