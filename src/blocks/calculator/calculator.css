@@ -1,4 +1,10 @@
 .calculator {
-  width: 85%;
-  margin: 50px auto;
+  width: 50%;
+  margin: 40px auto;
+}
+
+@media screen and (max-width: 500px) {
+  .calculator {
+    width: 90%;
+  }
 }

@@ -12,9 +12,13 @@ export default function Form(props) {
     maxSum,
     minPeriod,
     maxPeriod,
+    userSumInput,
+    userPeriodInput,
     sumValue,
     periodValue,
+    onInputBlur,
     onInputChange,
+    onRangeChange,
     disabled
   } = props;
 
@@ -29,8 +33,9 @@ export default function Form(props) {
         param='sum'
         min={minSum}
         max={maxSum}
+        onInputBlur={onInputBlur}
         onInputChange={onInputChange}
-        value={sumValue}
+        userInput={userSumInput}
         disabled={disabled}
       />
       <Range
@@ -38,26 +43,27 @@ export default function Form(props) {
         param='sum'
         min={minSum}
         max={maxSum}
-        onInputChange={onInputChange}
+        onRangeChange={onRangeChange}
         value={sumValue}
         disabled={disabled}
       />
       <Input
         heading='Срок вклада'
-        param='rate'
+        param='period'
         min={minPeriod}
         max={maxPeriod}
-        value={periodValue}
+        userInput={userPeriodInput}
+        onInputBlur={onInputBlur}
         onInputChange={onInputChange}
         disabled={disabled}
       />
       <Range
         heading='Срок вклада'
-        param='rate'
+        param='period'
         min={minPeriod}
         max={maxPeriod}
         value={periodValue}
-        onInputChange={onInputChange}
+        onRangeChange={onRangeChange}
         disabled={disabled}
       />
     </form>

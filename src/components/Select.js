@@ -13,7 +13,7 @@ export default function Select(props) {
       className='input__heading'>
       <span className='label'>Вклад</span>
       <select
-        className='select'
+        className='select input'
         id='select'
         value={selectedOption}
         onChange={handleSelect}

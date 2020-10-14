@@ -1,6 +1,5 @@
 .label {
+  grid-column: 1;
   font-size: 1rem;
   font-weight: 600;
-  display: flex;
-  margin-bottom: 1rem;
 }

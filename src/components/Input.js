@@ -1,10 +1,14 @@
 import React from 'react';
 
 export default function Input(props) {
-  const { heading, param, min, max, value, disabled, onInputChange } = props;
+  const { heading, param, min, max, userInput, disabled, onInputChange, onInputBlur } = props;
 
   function handleChange(evt) {
     onInputChange(evt);
+  }
+
+  function handleBlur(evt) {
+    onInputBlur(evt);
   }
 
   return (
@@ -14,13 +18,14 @@ export default function Input(props) {
       <span className='label'>{heading}</span>
       <input
         className='input'
-        id={param}
+        id={`${param}Input`}
         name={param}
         type='number'
         min={min}
         max={max}
-        value={value === '' ? min : value}
+        value={userInput < 0 ? Math.abs((userInput)) : userInput}
         disabled={disabled}
+        onBlur={handleBlur}
         onChange={handleChange} />
     </label>
   )

@@ -1,7 +1,10 @@
 .input {
+  border: 1px solid #d8e1e9;
+  border-radius: 7px;
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
+  outline: none;
 }
 
 .input::-webkit-outer-spin-button,
@@ -12,4 +15,8 @@
 
 .input[type=number] {
     -moz-appearance:textfield;
+}
+
+.input:hover {
+  box-shadow: 0px 0px 3px #c1c6ca;
 }

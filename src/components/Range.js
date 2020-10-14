@@ -1,10 +1,10 @@
 import React from 'react';
 
 export default function Range(props) {
-  const { heading, param, min, max, value, disabled, onInputChange } = props;
+  const { param, min, max, value, disabled, onRangeChange } = props;
 
   function handleChange(evt) {
-    onInputChange(evt);
+    onRangeChange(evt);
   }
 
   return (
@@ -24,8 +24,8 @@ export default function Range(props) {
         disabled={disabled}
         onChange={handleChange} />
       <div className='range__minmax'>
-        <span>{min === '' ? '' : Number(min).toLocaleString()}</span>
-        <span>{max === '' ? '' : Number(max).toLocaleString()}</span>
+        <span>{!min ? '' : `от ${Number(min).toLocaleString()}`}</span>
+        <span>{!max ? '' : `свыше ${Number(max).toLocaleString()}`}</span>
       </div>
     </label>
   )

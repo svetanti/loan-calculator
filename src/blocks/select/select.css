@@ -1,4 +1,10 @@
 .select {
-  width: 100%;
-  padding: 10px;
+  -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   background: url('../../images/caret.svg') right 3% center no-repeat;
+}
+
+.select::-ms-expand {
+  display: none;
 }

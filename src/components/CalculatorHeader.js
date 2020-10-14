@@ -8,12 +8,12 @@ export default function CalculatorHeader(props) {
       <div>
         <span className='hdr__text'>Вы вносите</span>
         <div className='hdr__heading hdr__heading_initial'>
-          {initialSum === '' ? '' : Number(initialSum).toLocaleString()}
+          {initialSum !== 0 && Number(initialSum).toLocaleString()}
         </div>
       </div>
       <div>
         <span className='hdr__text'>Вы получите</span>
-        <div className='hdr__heading hdr__heading_total'>{totalSum}</div>
+        <div className='hdr__heading hdr__heading_total'>{totalSum !== 0 && totalSum}</div>
       </div>
     </div>
   )

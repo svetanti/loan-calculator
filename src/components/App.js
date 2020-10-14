@@ -4,24 +4,25 @@ import calculations from '../utils/calculations';
 import Calculator from './Calculator';
 
 function App() {
-  const [sum, setSum] = useState(null)
-  const [rate, setRate] = useState('');
+  const [sum, setSum] = useState(0)
+  const [rate, setRate] = useState(0);
   const [selectedOption, setSelectedOption] = useState('');
   const [selectedDeposit, setSelectedDeposit] = useState([]);
-  const [minSum, setMinSum] = useState('');
-  const [maxSum, setMaxSum] = useState('');
-  const [minPeriod, setMinPeriod] = useState('');
-  const [maxPeriod, setMaxPeriod] = useState('');
-  const [sumValue, setSumValue] = useState('');
-  const [periodValue, setPeriodValue] = useState('');
+  const [minSum, setMinSum] = useState(0);
+  const [maxSum, setMaxSum] = useState(0);
+  const [minPeriod, setMinPeriod] = useState(0);
+  const [maxPeriod, setMaxPeriod] = useState(0);
+  const [sumValue, setSumValue] = useState(0);
+  const [periodValue, setPeriodValue] = useState(0);
   const [disabled, setDisabled] = useState(true);
 
-  const [selectedPeriod, setSelectedPeriod] = useState();
+  const [selectedPeriod, setSelectedPeriod] = useState(0);
+  const [userSumInput, setUserSumInput] = useState(0);
+  const [userPeriodInput, setUserPeriodInput] = useState(0);
 
   useEffect(() => {
     if (periodValue && selectedDeposit) {
       const depositParams = selectedDeposit.param;
-
       const days = depositParams.filter((param) => param.period_from <= +periodValue);
       const currentPeriodSumsAndRate = days[days.length - 1].summs_and_rate;
       setSelectedPeriod(currentPeriodSumsAndRate);
@@ -32,16 +33,27 @@ function App() {
 
   useEffect(() => {
     if (selectedPeriod && sumValue) {
-      const sums = selectedPeriod.filter((sum) => sum.summ_from <= sumValue);
+      const sums = selectedPeriod.filter((sum) => {
+        if (sumValue < selectedPeriod[0].summ_from) {
+          return selectedPeriod[0];
+        }
+        return sum.summ_from <= sumValue;
+      });
       const currentSum = sums[sums.length - 1].rate;
       setRate(currentSum);
       setSum(calculations(sumValue, rate, periodValue));
     }
-  }, [maxSum, periodValue, rate, selectedPeriod, sum, sumValue]);
+  }, [periodValue, rate, selectedPeriod, sum, sumValue]);
+
+  useEffect(() => {
+    if (sumValue < minSum && userSumInput < minSum) {
+      setSumValue(minSum);
+      setUserSumInput(minSum);
+    }
+  }, [sumValue, minSum, userSumInput])
 
   function hanldeSelectDeposit(evt) {
     setSelectedOption(evt.target.value);
-
     const currentDeposit = deposits.find((deposit) => deposit.code === evt.target.value);
     setSelectedDeposit(currentDeposit);
     setMinAndMax(currentDeposit);
@@ -56,14 +68,45 @@ function App() {
     setMaxPeriod(lastParam.period_from);
     setPeriodValue(firstParam.period_from);
     setSumValue(firstParam.summs_and_rate[0].summ_from);
+    setUserSumInput(firstParam.summs_and_rate[0].summ_from);
+    setUserPeriodInput(firstParam.period_from);
     setRate(firstParam.summs_and_rate[0].rate);
   }
 
-  function handleInputChange(evt) {
-    evt.target.id === 'sum' ? setSumValue(evt.target.value) : setPeriodValue(evt.target.value);
-    evt.target.value < minSum && setSumValue(minSum);
+  function handleRangeChange(evt) {
+    if (evt.target.id === 'sum') {
+      setSumValue(evt.target.value);
+      setUserSumInput(evt.target.value);
+    } else {
+      setPeriodValue(evt.target.value);
+      setUserPeriodInput(evt.target.value);
+    }
   }
 
+  function handleInputChange(evt) {
+    if (evt.target.id === 'sumInput') {
+      setUserSumInput(evt.target.value);
+      evt.target.value > minSum ? setSumValue(evt.target.value) : setSumValue(minSum);
+      return;
+    }
+    setUserPeriodInput(evt.target.value);
+    evt.target.value < minPeriod ? setPeriodValue(minPeriod) : setPeriodValue(evt.target.value);
+  }
+
+  function onInputBlur(evt) {
+    if (evt.target.id === 'sumInput') {
+      if (userSumInput < minSum) {
+        setUserSumInput(minSum);
+      }
+      else {
+        setUserSumInput(evt.target.value);
+        setSumValue(evt.target.value);
+      }
+      return;
+    }
+    setUserPeriodInput(evt.target.value);
+    evt.target.value < minPeriod ? setPeriodValue(minPeriod) : setPeriodValue(evt.target.value);
+  }
 
   return (
     <div className="page">
@@ -76,12 +119,16 @@ function App() {
         maxSum={maxSum}
         minPeriod={minPeriod}
         maxPeriod={maxPeriod}
+        userSumInput={userSumInput}
+        userPeriodInput={userPeriodInput}
         sumValue={sumValue}
         periodValue={periodValue}
         period={periodValue}
         sum={sum}
         rate={rate}
+        onInputBlur={onInputBlur}
         onInputChange={handleInputChange}
+        onRangeChange={handleRangeChange}
         disabled={disabled}
       />
     </div>

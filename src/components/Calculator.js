@@ -16,9 +16,13 @@ export default function Calculator(props) {
     minPeriod,
     maxSum,
     maxPeriod,
+    userSumInput,
+    userPeriodInput,
     sumValue,
     periodValue,
+    onInputBlur,
     onInputChange,
+    onRangeChange,
     disabled
   } = props;
 
@@ -35,9 +39,13 @@ export default function Calculator(props) {
         maxSum={maxSum}
         minPeriod={minPeriod}
         maxPeriod={maxPeriod}
+        userSumInput={userSumInput}
+        userPeriodInput={userPeriodInput}
         sumValue={sumValue}
         periodValue={periodValue}
+        onInputBlur={onInputBlur}
         onInputChange={onInputChange}
+        onRangeChange={onRangeChange}
         disabled={disabled}
       />
       <Result
