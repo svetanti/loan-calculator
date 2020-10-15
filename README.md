@@ -19,3 +19,7 @@
 * установить зависимости npm install;
 * запустить проект npm start;
 * проект запускается на http://localhost:3000/
+
+## URL
+
+https://svetanti.github.io/loan-calculator/
