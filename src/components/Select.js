@@ -18,7 +18,9 @@ export default function Select(props) {
         value={selectedOption}
         onChange={handleSelect}
         placeholder='Выберите тарифный план'>
-        <option disabled value=''>Выберите план</option>
+        <option
+          disabled
+          value=''>Выберите план</option>
         {
           deposits.map((deposit) => (
             <option

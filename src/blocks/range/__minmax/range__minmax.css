@@ -1,5 +1,6 @@
 .range__minmax {
   display: flex;
   justify-content: space-between;
+  height: 14px;
   font-size: 13px;
 }

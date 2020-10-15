@@ -3,6 +3,9 @@
    -moz-appearance: none;
    appearance: none;
    background: url('../../images/caret.svg') right 3% center no-repeat;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
 
 .select::-ms-expand {

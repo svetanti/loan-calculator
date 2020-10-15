@@ -24,8 +24,8 @@ export default function Range(props) {
         disabled={disabled}
         onChange={handleChange} />
       <div className='range__minmax'>
-        <span>{!min ? '' : `от ${Number(min).toLocaleString()}`}</span>
-        <span>{!max ? '' : `свыше ${Number(max).toLocaleString()}`}</span>
+        <span>{!min ? '' : `от ${Number(min).toLocaleString()} ${param === 'sum' ? '\u20bd' : 'дня'}`}</span>
+        <span>{!max ? '' : `свыше ${Number(max).toLocaleString()} ${param === 'sum' ? '\u20bd' : 'дня'}`}</span>
       </div>
     </label>
   )
