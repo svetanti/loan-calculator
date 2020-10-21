@@ -21,23 +21,7 @@ export default function Form(props) {
     disabled
   } = useContext(InputsContext);
 
-  const {
-    deposits,
-    /* selectedOption,
-    onSelect, */
-    /* minSum,
-    maxSum,
-    minPeriod,
-    maxPeriod, */
-    /* userSumInput,
-    userPeriodInput, */
-    /* sumValue,
-    periodValue,
-    onInputBlur,
-    onInputChange,
-    onRangeChange,
-    disabled */
-  } = props;
+  const { deposits } = props;
 
   return (
     <form className='form'>
@@ -53,8 +37,7 @@ export default function Form(props) {
         onInputBlur={onInputBlur}
         onInputChange={onInputChange}
         userInput={userSumInput}
-        disabled={disabled}
-      />
+        disabled={disabled} />
       <Range
         heading='Сумма вклада'
         param='sum'
@@ -62,8 +45,7 @@ export default function Form(props) {
         max={maxSum}
         onRangeChange={onRangeChange}
         value={sumValue}
-        disabled={disabled}
-      />
+        disabled={disabled} />
       <Input
         heading='Срок вклада'
         param='period'
@@ -72,8 +54,7 @@ export default function Form(props) {
         userInput={userPeriodInput}
         onInputBlur={onInputBlur}
         onInputChange={onInputChange}
-        disabled={disabled}
-      />
+        disabled={disabled} />
       <Range
         heading='Срок вклада'
         param='period'
@@ -81,8 +62,7 @@ export default function Form(props) {
         max={maxPeriod}
         value={periodValue}
         onRangeChange={onRangeChange}
-        disabled={disabled}
-      />
+        disabled={disabled} />
     </form>
   )
 }

@@ -12,21 +12,7 @@ export default function Calculator(props) {
     deposit,
     period,
     sum,
-    rate,
-    /* selectedOption,
-    onSelect, */
-    /*   minSum,
-      minPeriod,
-      maxSum,
-      maxPeriod, */
-    /* serSumInput,
-    userPeriodInput,
-    sumValue,
-    periodValue,
-    onInputBlur,
-    onInputChange,
-    onRangeChange,
-    disabled */
+    rate
   } = props;
 
   return (
@@ -35,22 +21,7 @@ export default function Calculator(props) {
         initialSum={sumValue}
         totalSum={sum} />
       <Form
-        deposits={deposits}
-      /* selectedOption={selectedOption}
-      onSelect={onSelect} */
-      /*   minSum={minSum}
-        maxSum={maxSum}
-        minPeriod={minPeriod}
-        maxPeriod={maxPeriod} */
-      /*   userSumInput={userSumInput}
-        userPeriodInput={userPeriodInput}
-        sumValue={sumValue}
-        periodValue={periodValue}
-        onInputBlur={onInputBlur}
-        onInputChange={onInputChange}
-        onRangeChange={onRangeChange}
-        disabled={disabled} */
-      />
+        deposits={deposits} />
       <Result
         deposit={deposit}
         period={period}

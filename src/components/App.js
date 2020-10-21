@@ -117,52 +117,31 @@ function App() {
   }
 
   return (
-    <InputsContext.Provider
-      value={
-        {
-          selectedOption,
-          onSelect: hanldeSelectDeposit,
-          userSumInput,
-          userPeriodInput,
-          sumValue,
-          periodValue,
-          onInputBlur: handleInputBlur,
-          onInputChange: handleInputChange,
-          onRangeChange: handleRangeChange,
-          disabled
-        }
-      }>
-      <MinMaxContext.Provider
-        value={
-          {
-            minSum,
-            maxSum,
-            minPeriod,
-            maxPeriod
-          }
-        }>
-
+    <InputsContext.Provider value={{
+      selectedOption,
+      onSelect: hanldeSelectDeposit,
+      userSumInput,
+      userPeriodInput,
+      sumValue,
+      periodValue,
+      onInputBlur: handleInputBlur,
+      onInputChange: handleInputChange,
+      onRangeChange: handleRangeChange,
+      disabled
+    }}>
+      <MinMaxContext.Provider value={{
+        minSum,
+        maxSum,
+        minPeriod,
+        maxPeriod
+      }}>
         <div className="page">
           <Calculator
             deposits={deposits}
-            /*  selectedOption={selectedOption}
-             onSelect={hanldeSelectDeposit} */
             deposit={selectedDeposit.name}
-            /*   minSum={minSum}
-              maxSum={maxSum}
-              minPeriod={minPeriod}
-              maxPeriod={maxPeriod} */
-            /* userSumInput={userSumInput}
-            userPeriodInput={userPeriodInput}
-            sumValue={sumValue}
-            periodValue={periodValue} */
             period={periodValue}
             sum={sum}
             rate={rate}
-          /* onInputBlur={handleInputBlur}
-          onInputChange={handleInputChange}
-          onRangeChange={handleRangeChange}
-          disabled={disabled} */
           />
           <PrintButton
             onClick={print}
