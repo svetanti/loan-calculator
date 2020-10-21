@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { MinMaxContext } from '../contexts/MinMaxContext';
+import { InputsContext } from '../contexts/InputsContext';
 import Input from './Input';
 import Range from './Range';
 import Select from './Select';
 
 export default function Form(props) {
+  const { minSum, maxSum, minPeriod, maxPeriod } = useContext(MinMaxContext);
+
   const {
-    deposits,
     selectedOption,
     onSelect,
-    minSum,
-    maxSum,
-    minPeriod,
-    maxPeriod,
     userSumInput,
     userPeriodInput,
     sumValue,
@@ -20,6 +19,24 @@ export default function Form(props) {
     onInputChange,
     onRangeChange,
     disabled
+  } = useContext(InputsContext);
+
+  const {
+    deposits,
+    /* selectedOption,
+    onSelect, */
+    /* minSum,
+    maxSum,
+    minPeriod,
+    maxPeriod, */
+    /* userSumInput,
+    userPeriodInput, */
+    /* sumValue,
+    periodValue,
+    onInputBlur,
+    onInputChange,
+    onRangeChange,
+    disabled */
   } = props;
 
   return (

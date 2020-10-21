@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Form from './Form';
 import Result from './Result';
 import CalculatorHeader from './CalculatorHeader';
+import { InputsContext } from '../contexts/InputsContext';
 
 export default function Calculator(props) {
+  const { sumValue } = useContext(InputsContext);
+
   const {
     deposits,
     deposit,
     period,
     sum,
     rate,
-    selectedOption,
-    onSelect,
-    minSum,
-    minPeriod,
-    maxSum,
-    maxPeriod,
-    userSumInput,
+    /* selectedOption,
+    onSelect, */
+    /*   minSum,
+      minPeriod,
+      maxSum,
+      maxPeriod, */
+    /* serSumInput,
     userPeriodInput,
     sumValue,
     periodValue,
     onInputBlur,
     onInputChange,
     onRangeChange,
-    disabled
+    disabled */
   } = props;
 
   return (
@@ -33,20 +36,20 @@ export default function Calculator(props) {
         totalSum={sum} />
       <Form
         deposits={deposits}
-        selectedOption={selectedOption}
-        onSelect={onSelect}
-        minSum={minSum}
+      /* selectedOption={selectedOption}
+      onSelect={onSelect} */
+      /*   minSum={minSum}
         maxSum={maxSum}
         minPeriod={minPeriod}
-        maxPeriod={maxPeriod}
-        userSumInput={userSumInput}
+        maxPeriod={maxPeriod} */
+      /*   userSumInput={userSumInput}
         userPeriodInput={userPeriodInput}
         sumValue={sumValue}
         periodValue={periodValue}
         onInputBlur={onInputBlur}
         onInputChange={onInputChange}
         onRangeChange={onRangeChange}
-        disabled={disabled}
+        disabled={disabled} */
       />
       <Result
         deposit={deposit}

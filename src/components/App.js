@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { InputsContext } from '../contexts/InputsContext';
+import { MinMaxContext } from '../contexts/MinMaxContext';
 import { deposits } from '../data/depcalc.json';
 import calculations from '../utils/calculations';
 import Calculator from './Calculator';
@@ -95,7 +97,7 @@ function App() {
     evt.target.value < minPeriod ? setPeriodValue(minPeriod) : setPeriodValue(evt.target.value);
   }
 
-  function onInputBlur(evt) {
+  function handleInputBlur(evt) {
     if (evt.target.id === 'sumInput') {
       if (userSumInput < minSum) {
         setUserSumInput(minSum);
@@ -115,32 +117,60 @@ function App() {
   }
 
   return (
-    <div className="page">
-      <Calculator
-        deposits={deposits}
-        selectedOption={selectedOption}
-        onSelect={hanldeSelectDeposit}
-        deposit={selectedDeposit.name}
-        minSum={minSum}
-        maxSum={maxSum}
-        minPeriod={minPeriod}
-        maxPeriod={maxPeriod}
-        userSumInput={userSumInput}
-        userPeriodInput={userPeriodInput}
-        sumValue={sumValue}
-        periodValue={periodValue}
-        period={periodValue}
-        sum={sum}
-        rate={rate}
-        onInputBlur={onInputBlur}
-        onInputChange={handleInputChange}
-        onRangeChange={handleRangeChange}
-        disabled={disabled}
-      />
-      <PrintButton
-        onClick={print}
-        btnDisabled={btnDisabled} />
-    </div>
+    <InputsContext.Provider
+      value={
+        {
+          selectedOption,
+          onSelect: hanldeSelectDeposit,
+          userSumInput,
+          userPeriodInput,
+          sumValue,
+          periodValue,
+          onInputBlur: handleInputBlur,
+          onInputChange: handleInputChange,
+          onRangeChange: handleRangeChange,
+          disabled
+        }
+      }>
+      <MinMaxContext.Provider
+        value={
+          {
+            minSum,
+            maxSum,
+            minPeriod,
+            maxPeriod
+          }
+        }>
+
+        <div className="page">
+          <Calculator
+            deposits={deposits}
+            /*  selectedOption={selectedOption}
+             onSelect={hanldeSelectDeposit} */
+            deposit={selectedDeposit.name}
+            /*   minSum={minSum}
+              maxSum={maxSum}
+              minPeriod={minPeriod}
+              maxPeriod={maxPeriod} */
+            /* userSumInput={userSumInput}
+            userPeriodInput={userPeriodInput}
+            sumValue={sumValue}
+            periodValue={periodValue} */
+            period={periodValue}
+            sum={sum}
+            rate={rate}
+          /* onInputBlur={handleInputBlur}
+          onInputChange={handleInputChange}
+          onRangeChange={handleRangeChange}
+          disabled={disabled} */
+          />
+          <PrintButton
+            onClick={print}
+            btnDisabled={btnDisabled} />
+        </div>
+
+      </MinMaxContext.Provider >
+    </InputsContext.Provider >
   );
 }
 
