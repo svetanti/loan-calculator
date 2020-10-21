@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { InputsContext } from '../contexts/InputsContext';
-import { MinMaxContext } from '../contexts/MinMaxContext';
+import { StateContext } from '../contexts/StateContext';
+import { DepositsContext } from '../contexts/DepositsContext';
 import { deposits } from '../data/depcalc.json';
 import calculations from '../utils/calculations';
 import Calculator from './Calculator';
@@ -117,39 +117,35 @@ function App() {
   }
 
   return (
-    <InputsContext.Provider value={{
-      selectedOption,
-      onSelect: hanldeSelectDeposit,
-      userSumInput,
-      userPeriodInput,
-      sumValue,
-      periodValue,
-      onInputBlur: handleInputBlur,
-      onInputChange: handleInputChange,
-      onRangeChange: handleRangeChange,
-      disabled
-    }}>
-      <MinMaxContext.Provider value={{
+    <DepositsContext.Provider value={deposits}>
+      <StateContext.Provider value={{
+        deposit: selectedDeposit.name,
+        selectedOption,
+        onSelect: hanldeSelectDeposit,
         minSum,
         maxSum,
         minPeriod,
-        maxPeriod
+        maxPeriod,
+        userSumInput,
+        userPeriodInput,
+        sumValue,
+        periodValue,
+        onInputBlur: handleInputBlur,
+        onInputChange: handleInputChange,
+        onRangeChange: handleRangeChange,
+        period: periodValue,
+        sum,
+        rate,
+        disabled
       }}>
         <div className="page">
-          <Calculator
-            deposits={deposits}
-            deposit={selectedDeposit.name}
-            period={periodValue}
-            sum={sum}
-            rate={rate}
-          />
+          <Calculator />
           <PrintButton
             onClick={print}
             btnDisabled={btnDisabled} />
         </div>
-
-      </MinMaxContext.Provider >
-    </InputsContext.Provider >
+      </StateContext.Provider>
+    </DepositsContext.Provider>
   );
 }
 

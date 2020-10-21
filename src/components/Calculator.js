@@ -2,26 +2,17 @@ import React, { useContext } from 'react';
 import Form from './Form';
 import Result from './Result';
 import CalculatorHeader from './CalculatorHeader';
-import { InputsContext } from '../contexts/InputsContext';
+import { StateContext } from '../contexts/StateContext';
 
-export default function Calculator(props) {
-  const { sumValue } = useContext(InputsContext);
-
-  const {
-    deposits,
-    deposit,
-    period,
-    sum,
-    rate
-  } = props;
+export default function Calculator() {
+  const { sumValue, period, sum, rate, deposit } = useContext(StateContext);
 
   return (
     <div className='calculator'>
       <CalculatorHeader
         initialSum={sumValue}
         totalSum={sum} />
-      <Form
-        deposits={deposits} />
+      <Form />
       <Result
         deposit={deposit}
         period={period}
