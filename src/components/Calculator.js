@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import Form from './Form';
 import Result from './Result';
 import CalculatorHeader from './CalculatorHeader';
-import { StateContext } from '../contexts/StateContext';
+import { DynamicContext } from '../contexts/DynamicContext';
 
 export default function Calculator() {
-  const { sumValue, period, sum, rate, deposit } = useContext(StateContext);
+  const { sumValue, period, sum, rate, deposit } = useContext(DynamicContext);
 
   return (
     <div className='calculator'>

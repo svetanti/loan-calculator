@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 import Input from './Input';
 import Range from './Range';
 import Select from './Select';
-import { StateContext } from '../contexts/StateContext';
-import { DepositsContext } from '../contexts/DepositsContext';
+import { DynamicContext } from '../contexts/DynamicContext';
+import { DataContext } from '../contexts/DataContext';
 
 export default function Form() {
   const { selectedOption,
@@ -19,9 +19,9 @@ export default function Form() {
     onInputBlur,
     onInputChange,
     onRangeChange,
-    disabled } = useContext(StateContext);
+    disabled } = useContext(DynamicContext);
 
-  const deposits = useContext(DepositsContext);
+  const deposits = useContext(DataContext);
 
   return (
     <form className='form'>

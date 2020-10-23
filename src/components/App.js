@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { StateContext } from '../contexts/StateContext';
-import { DepositsContext } from '../contexts/DepositsContext';
+import { DynamicContext } from '../contexts/DynamicContext';
+import { DataContext } from '../contexts/DataContext';
 import { deposits } from '../data/depcalc.json';
 import calculations from '../utils/calculations';
 import Calculator from './Calculator';
@@ -117,8 +117,8 @@ function App() {
   }
 
   return (
-    <DepositsContext.Provider value={deposits}>
-      <StateContext.Provider value={{
+    <DataContext.Provider value={deposits}>
+      <DynamicContext.Provider value={{
         deposit: selectedDeposit.name,
         selectedOption,
         onSelect: hanldeSelectDeposit,
@@ -144,8 +144,8 @@ function App() {
             onClick={print}
             btnDisabled={btnDisabled} />
         </div>
-      </StateContext.Provider>
-    </DepositsContext.Provider>
+      </DynamicContext.Provider>
+    </DataContext.Provider>
   );
 }
 
